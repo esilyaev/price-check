@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 
 import mysql.connector
-import hashlib
 from datetime import datetime
 
 
@@ -62,7 +61,7 @@ class Db:
 
             except mysql.connector.Error as error:
                 if self.connect.is_connected():
-                    cursor.close()
+
                     self.connect.close()
 
                 raise RuntimeError(

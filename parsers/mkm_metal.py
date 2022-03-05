@@ -44,7 +44,7 @@ def get_data(url: str, refresh=False):
 
 def main(refresh=False):
     data = get_data(
-        url='https://mkm-metal.ru/catalog/sort/armatura/armatura-a-500/', refresh=False)
+        url='https://mkm-metal.ru/catalog/sort/armatura/armatura-a-500/', refresh=refresh)
     return data
 
 

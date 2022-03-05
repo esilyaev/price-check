@@ -3,6 +3,7 @@
 
 import mysql.connector
 import hashlib
+from datetime import datetime
 
 
 class Db:
@@ -57,6 +58,7 @@ class Db:
         for offer in data:
             try:
                 offer_id = self.GetOfferIdOrCreate(offer, store_id)
+                self.InsertPrice(offer, offer_id, store_id)
 
             except mysql.connector.Error as error:
                 if self.connect.is_connected():
@@ -67,25 +69,58 @@ class Db:
                     "Failed to insert into MySQL table {}".format(error))
 
     def GetOfferIdOrCreate(self, offer: dict, store_id: int) -> int:
+
         cursor = self.connect.cursor()
 
         sql = f"select offer_id from offers where name='{offer['name']}' and store_id={store_id}"
-
+        # print(sql)
         cursor.execute(sql)
-        result = cursor.fetchone()[0]
+        result = cursor.fetchone()
         cursor.close()
 
         if not result:
             cursor = self.connect.cursor()
-            offer_id = abs(hash(s)) % (10 ** 10)
 
-            sql = """insert into offers (offer_id, name, categoryId, unit, store_id) 
+            offer_id = abs(hash(offer['name'])) % (10 ** 8)
+
+            sql = """insert into offers (offer_id, name, categoryId, unit, store_id)
                     VALUES (%s, %s, %s, %s, %s)"""
 
             val = (offer_id, offer['name'], offer['category_id'],
                    offer['unit'], store_id)
-
-            cursor.execute(sql)
+            # print(sql, val)
+            cursor.execute(sql, val)
             self.connect.commit()
 
             sql = f"select offer_id from offers where name='{offer['name']}' and store_id={store_id}"
+            cursor.execute(sql)
+
+            result = cursor.fetchone()
+            cursor.close()
+
+        return result[0]
+
+    def InsertPrice(self, offer: object, offer_id: int, store_id: int):
+        date = datetime.now().strftime('%Y-%m-%d')
+        cursor = self.connect.cursor()
+
+        sql = f"select * from pricehistory where offer_id={offer_id} and store_id={store_id} and priceDate='{date}'"
+        cursor.execute(sql)
+        result = cursor.fetchone()
+
+        if result:
+            cursor.close()
+            return
+
+        sql = """insert into pricehistory (offer_id, price, priceGold, priceDate, store_id)
+                VALUES (%s, %s, %s, %s, %s) """
+
+        val = (
+            offer_id, offer['price'], offer['price'], date, store_id
+        )
+
+        cursor.execute(sql, val)
+
+        self.connect.commit()
+
+        cursor.close()

@@ -8,6 +8,7 @@ from parsers import mc_ru
 # from parsers import mkm_metal
 from parsers import agrupp
 from database.db import Db
+from yaspin import yaspin
 
 
 def main():
@@ -29,17 +30,22 @@ def main():
 
     db = Db()
 
-    i = 0
+    i = 1
 
     for parser in parser_list:
-        time = datetime.now().strftime("%Y-%m-%d")
+        with yaspin(text=f'Processing parser #{i} / {len(parser_list)}...', color='cyan') as spinner:
+            time = datetime.now().strftime("%Y-%m-%d")
 
-        # if True -> will be request and resave html
-        data = parser(refresh=False)
+            # if True -> will be request and resave html
+            data = parser(refresh=True)
 
-        file_name = f"{time}_{i}.json"
+            file_name = f"{time}_{i}.json"
 
-        db.InsertMany(data)
+            db.InsertMany(data)
+
+            spinner.write('Completed!')
+            spinner.ok('🆗')
+            i += 1
 
 
 if __name__ == '__main__':

@@ -11,7 +11,7 @@ def get_data(url: str, refresh=False):
         }
 
         responce = requests.get(url=url, headers=headers)
-        print(responce)
+        # print(responce)
         with open(file=f"{url.split('/')[2]}.html", mode='w') as file:
             file.write(responce.text)
 

@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 from bs4 import BeautifulSoup
 import time
 
@@ -24,7 +25,13 @@ def get_data(url, refresh=False):
         # with open(file=f"{url.split('/')[2]}.html", mode='r') as file:
         #     src = file.read()
 
-        browser = webdriver.Chrome('Lib/driver/chromedriver.exe')
+        options = Options()
+        options.add_argument('--headless')
+        options.add_argument('--disable-gpu')
+        options.add_argument('--log-level=3')
+
+        browser = webdriver.Chrome(
+            'Lib/driver/chromedriver.exe', options=options)
 
         browser.get(url)
 

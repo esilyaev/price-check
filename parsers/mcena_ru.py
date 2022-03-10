@@ -15,7 +15,8 @@ def get_data(url: str, refresh: bool) -> dict:
         options = Options()
         options.add_argument('--headless')
         options.add_argument('--disable-gpu')
-        options.add_argument('--log-level=3')
+        # options.add_argument('--log-level=3')
+        options.add_experimental_option('excludeSwitches', ['enable-logging'])
 
         browser = webdriver.Chrome(Config.GetChromeDriverPath(),
                                    options=options)
@@ -48,7 +49,7 @@ def get_data(url: str, refresh: bool) -> dict:
         items = p.find_all('td')
         for i in range(len(vendors)):
             try:
-                price = int(''.join(items[3+i].text.split(' ')))
+                price = int(''.join(items[3 + i].text.split(' ')))
             except:
                 price = None
 
@@ -60,13 +61,14 @@ def get_data(url: str, refresh: bool) -> dict:
                 'category_id': CATEGORY_ID
             })
 
-    with open(file='mcena_ru.json', mode='w') as out_file:
-        json.dump(final_list, out_file, indent=4, ensure_ascii=False)
+    return final_list
 
 
 def main(refresh=False):
     url = 'https://www.mcena.ru/metalloprokat/armatura/a500s-gost-r-52544_ceny'
-    get_data(url, refresh=refresh)
+    data = get_data(url, refresh=refresh)
+
+    return data
 
 
 if __name__ == '__main__':

@@ -14,13 +14,13 @@ from yaspin import yaspin
 def main():
 
     parser_list = [
-        # agrupp.main,  # return bad html
-        # mc_ru.main,
+        agrupp.main,  # return bad html
+        mc_ru.main,
         # mkm_metal.main,
         mcena_ru.main
     ]
 
-    # db = Db()
+    db = Db()
 
     counter_of_parsers = 1
 
@@ -30,7 +30,9 @@ def main():
             # if True -> will be request and resave html
             data = parser(refresh=True)
 
-            # db.InsertMany(data)
+            # print(data)
+
+            db.InsertMany(data)
 
             spinner.text = 'Completed!'
             spinner.ok('🆗')

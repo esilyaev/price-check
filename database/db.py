@@ -18,14 +18,31 @@ class Db:
 
     def InsertMany(self, data: list) -> int:
 
-        store = data[0]['store']
-        store_id = self.GetStoreIdOrCreate(store)
-        if not store_id:
-            raise RuntimeError('Cant get id of stores. Aborting ...')
+        # final_list.append({
+        #     'name': meta,
+        #     'price': price,
+        #     'unit': UNIT,
+        #     'store': STORE,
+        #     'category_id': CATEGORY_ID
+        # })
 
-        self.HandleOffers(data, store_id)
+        for offer in data:
+            try:
+                store_name = offer['store']
+                store_id = self.GetStoreIdOrCreate(store_name)
+                offer_id = self.GetOfferIdOrCreate(offer, store_id)
+                self.InsertPrice(offer, offer_id, store_id)
+
+            except mysql.connector.Error as error:
+                if self.connect.is_connected():
+
+                    self.connect.close()
+
+                raise RuntimeError(
+                    "Failed to insert into MySQL table {}".format(error))
 
     def GetStoreIdOrCreate(self, store_name: str) -> int:
+        store_name = store_name[:30]
         result = None
         cursor = self.connect.cursor()
 
@@ -44,28 +61,6 @@ class Db:
         cursor.close()
 
         return result[0]
-
-    def HandleOffers(self, data: list, store_id: int):
-        # final_list.append({
-        #     'name': meta,
-        #     'price': price,
-        #     'unit': UNIT,
-        #     'store': STORE,
-        #     'category_id': CATEGORY_ID
-        # })
-
-        for offer in data:
-            try:
-                offer_id = self.GetOfferIdOrCreate(offer, store_id)
-                self.InsertPrice(offer, offer_id, store_id)
-
-            except mysql.connector.Error as error:
-                if self.connect.is_connected():
-
-                    self.connect.close()
-
-                raise RuntimeError(
-                    "Failed to insert into MySQL table {}".format(error))
 
     def GetOfferIdOrCreate(self, offer: dict, store_id: int) -> int:
 

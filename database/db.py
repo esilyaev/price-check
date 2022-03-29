@@ -75,7 +75,7 @@ class Db:
         if not result:
             cursor = self.connect.cursor()
 
-            offer_id = abs(hash(offer['name'])) % (10 ** 8)
+            offer_id = abs(hash(offer['name'] + offer['store'])) % (10 ** 8)
 
             sql = """insert into offers (offer_id, name, categoryId, unit, store_id)
                     VALUES (%s, %s, %s, %s, %s)"""

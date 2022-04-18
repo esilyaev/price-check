@@ -43,16 +43,21 @@ def main():
 
     for parser in parser_list:
         with yaspin(text=f'Processing parser #{counter_of_parsers} / {len(parser_list)}...', color='cyan') as spinner:
+            try:
+                # if True -> will be request and resave html
+                data = parser(refresh=True)
 
-            # if True -> will be request and resave html
-            data = parser(refresh=True)
+                # print(data)
 
-            # print(data)
+                db.InsertMany(data)
 
-            db.InsertMany(data)
+                spinner.text = 'Completed!'
+                spinner.ok('🆗')
 
-            spinner.text = 'Completed!'
-            spinner.ok('🆗')
+            except:
+                print
+                spinner.fail('Error!')
+
             counter_of_parsers += 1
 
 

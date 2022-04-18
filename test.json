@@ -1,0 +1,191 @@
+[
+    {
+        "name": "В7,5 Ж5",
+        "price": 3460,
+        "unit": "м3",
+        "store": "partner-lider.ru",
+        "category_id": "17286"
+    },
+    {
+        "name": "В15 Ж5",
+        "price": 3570,
+        "unit": "м3",
+        "store": "partner-lider.ru",
+        "category_id": "17286"
+    },
+    {
+        "name": "В7,5 Ж4",
+        "price": 3460,
+        "unit": "м3",
+        "store": "partner-lider.ru",
+        "category_id": "17286"
+    },
+    {
+        "name": "В7,5 П3",
+        "price": 3450,
+        "unit": "м3",
+        "store": "partner-lider.ru",
+        "category_id": "17286"
+    },
+    {
+        "name": "В7,5 П4",
+        "price": 3450,
+        "unit": "м3",
+        "store": "partner-lider.ru",
+        "category_id": "17286"
+    },
+    {
+        "name": "В7,5 П3 (гранит)",
+        "price": 3670,
+        "unit": "м3",
+        "store": "partner-lider.ru",
+        "category_id": "17286"
+    },
+    {
+        "name": "В7,5 П4 (гранит)",
+        "price": 3550,
+        "unit": "м3",
+        "store": "partner-lider.ru",
+        "category_id": "17286"
+    },
+    {
+        "name": "В12,5 П3 F50",
+        "price": 3530,
+        "unit": "м3",
+        "store": "partner-lider.ru",
+        "category_id": "17286"
+    },
+    {
+        "name": "В12,5 П4 F50",
+        "price": 3550,
+        "unit": "м3",
+        "store": "partner-lider.ru",
+        "category_id": "17286"
+    },
+    {
+        "name": "В15 П3 F75 W2",
+        "price": 3640,
+        "unit": "м3",
+        "store": "partner-lider.ru",
+        "category_id": "17286"
+    },
+    {
+        "name": "В15 П4 F75 W2",
+        "price": 3680,
+        "unit": "м3",
+        "store": "partner-lider.ru",
+        "category_id": "17286"
+    },
+    {
+        "name": "В20 П3 F100 W4",
+        "price": 3780,
+        "unit": "м3",
+        "store": "partner-lider.ru",
+        "category_id": "17286"
+    },
+    {
+        "name": "В20 П4 F100 W4",
+        "price": 3840,
+        "unit": "м3",
+        "store": "partner-lider.ru",
+        "category_id": "17286"
+    },
+    {
+        "name": "В25 П4 F150 W6",
+        "price": 4020,
+        "unit": "м3",
+        "store": "partner-lider.ru",
+        "category_id": "17286"
+    },
+    {
+        "name": "В25 П3 F150 W6",
+        "price": 3990,
+        "unit": "м3",
+        "store": "partner-lider.ru",
+        "category_id": "17286"
+    },
+    {
+        "name": "В25 П3 F200 W8",
+        "price": 4280,
+        "unit": "м3",
+        "store": "partner-lider.ru",
+        "category_id": "17286"
+    },
+    {
+        "name": "БСГ В25 П4 F200 W8 (М350)",
+        "price": 4280,
+        "unit": "м3",
+        "store": "partner-lider.ru",
+        "category_id": "17286"
+    },
+    {
+        "name": "В22,5 П3 F150 W6",
+        "price": 3950,
+        "unit": "м3",
+        "store": "partner-lider.ru",
+        "category_id": "17286"
+    },
+    {
+        "name": "В22,5 П4 F150 W6",
+        "price": 3980,
+        "unit": "м3",
+        "store": "partner-lider.ru",
+        "category_id": "17286"
+    },
+    {
+        "name": "В30 П3 F200 W10",
+        "price": 4400,
+        "unit": "м3",
+        "store": "partner-lider.ru",
+        "category_id": "17286"
+    },
+    {
+        "name": "В30 П4 F200 W10",
+        "price": 4400,
+        "unit": "м3",
+        "store": "partner-lider.ru",
+        "category_id": "17286"
+    },
+    {
+        "name": "В30 П3 F150 W6",
+        "price": null,
+        "unit": "м3",
+        "store": "partner-lider.ru",
+        "category_id": "17286"
+    },
+    {
+        "name": "В30 П4 F150 W6",
+        "price": 4160,
+        "unit": "м3",
+        "store": "partner-lider.ru",
+        "category_id": "17286"
+    },
+    {
+        "name": "В35 П3 F200 W10",
+        "price": 4550,
+        "unit": "м3",
+        "store": "partner-lider.ru",
+        "category_id": "17286"
+    },
+    {
+        "name": "В40 П3 F300 W12",
+        "price": 4680,
+        "unit": "м3",
+        "store": "partner-lider.ru",
+        "category_id": "17286"
+    },
+    {
+        "name": "В40 П4 F300 W12",
+        "price": 4730,
+        "unit": "м3",
+        "store": "partner-lider.ru",
+        "category_id": "17286"
+    },
+    {
+        "name": "В35 П4 F300 W10",
+        "price": 4590,
+        "unit": "м3",
+        "store": "partner-lider.ru",
+        "category_id": "17286"
+    }
+]
